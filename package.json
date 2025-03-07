@@ -4,7 +4,8 @@
     "description": "Arrhub is a super simple unified dashboard for managing all your \"Arr\" applications such as Sonarr, Radarr, Lidarr, and more. Easily navigate and control your media automation tools from a single interface.",
     "main": "build_single_file.js",
     "scripts": {
-      "test": "echo \"Error: no test specified\" && exit 1"
+      "test": "echo \"Error: no test specified\" && exit 1",
+      "build_single": "node build_single_file.js"
     },
     "repository": {
       "type": "git",
