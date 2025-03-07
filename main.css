@@ -1,0 +1,52 @@
+html, body, .container { margin: 0; padding: 0; width: 100%; height: 100%; }
+.container {
+	display: flex;
+	background: #353535;
+}
+
+.sidebar {
+	width: 200px;
+	background: #202224;
+	border-right: 1px solid #000;
+	display: flex;
+	flex-direction: column;
+}
+
+.sidebar .sidebarBtn {
+	display: flex;
+	height: 30px;
+	line-height: 30px;
+	padding: 5px;
+	background: #202020;
+	cursor: pointer;
+	color: #AEAEAE;
+}
+
+.sidebar .sidebarBtn:not(.active):hover,
+.sidebar .sidebarBtn.active {
+	color: #FFF;
+}
+
+.sidebar .sidebarBtn:not(.active):hover i,
+.sidebar .sidebarBtn.active i {
+	opacity: 1;
+}
+
+.sidebar .sidebarBtn i {
+	width: 20px;
+	height: 20px;
+	margin-top: 5px;
+	display: block;
+	background-size: contain;
+	opacity: .5;
+}
+
+.sidebar .sidebarBtn span {
+	margin-left: 5px;
+	user-select: none;
+}
+
+iframe {
+	border: none;
+	flex-grow: 1;
+}
