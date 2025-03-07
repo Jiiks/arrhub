@@ -1,0 +1,23 @@
+{
+    "name": "arrhub",
+    "version": "1.0.0",
+    "description": "Arrhub is a super simple unified dashboard for managing all your \"Arr\" applications such as Sonarr, Radarr, Lidarr, and more. Easily navigate and control your media automation tools from a single interface.",
+    "main": "build_single_file.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/Jiiks/arrhub.git"
+    },
+    "keywords": [
+      "arr"
+    ],
+    "author": "Jiiks",
+    "license": "MIT",
+    "bugs": {
+      "url": "https://github.com/Jiiks/arrhub/issues"
+    },
+    "homepage": "https://github.com/Jiiks/arrhub#readme"
+  }
+  

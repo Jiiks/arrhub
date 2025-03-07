@@ -6,8 +6,11 @@
 
 	function activateSource(source) {
 		iframe.src = source.fullHost;
-		document.title = `${source.text} - ${Arrhub}`;
+		document.title = `${source.text} - Arrhub`;
 		window.location.hash = `#${source.id}`;
+		const btn = document.getElementById(`btn-${source.id}`);
+		if(!btn.classList.contains('active'))
+			btn.classList.add('active');
 	}
 
 	enabledSources.forEach(source => {
