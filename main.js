@@ -2,10 +2,42 @@
 	const enabledSources = sources.filter(s => s.enabled);
 	const sidebar = document.getElementById('sidebar');
 	const sidebarBtns = [];
-	const iframe = document.getElementsByTagName('iframe')[0];
+	const container = document.getElementById('maincontainer');
+	//const iframe = document.getElementById('mainframe');
+	const controls = document.getElementById('controls');
 
+	function multiFrame() { return JSON.parse(localStorage.getItem('multiframe')); }
+
+	let activeSource = null;
 	function activateSource(source) {
-		iframe.src = source.fullHost;
+		if(source === null) return;
+		activeSource = source;
+		if(!multiFrame()) {
+			enabledSources.forEach(s => {
+				if(s.id === source.id) return;
+				if(s.frame.src !== 'about:blank') {
+					s.frame.src = 'about:blank';
+					console.log('blank frame');
+				}
+				s.frame.className = 'hide';
+			});
+			//source.frame.src = 'about:blank';
+			//source.frame.className = 'hide';
+			//iframe.className = '';
+			//iframe.src = source.fullHost;
+			if(!source.frame.src.startsWith(source.fullHost)) {
+				console.log('set to full host', source.frame.src, source.fullHost);
+				source.frame.src = source.fullHost;
+			}
+			source.frame.className = '';
+		} else {
+			enabledSources.forEach(source => {
+				source.frame.className = 'hide';
+			});
+			source.frame.className = '';
+			if(source.frame.src === 'about:blank' || source.frame.src === '') source.frame.src = source.fullHost;
+			//iframe.src = 'about:blank';
+		}
 		document.title = `${source.text} - Arrhub`;
 		window.location.hash = `#${source.id}`;
 		const btn = document.getElementById(`btn-${source.id}`);
@@ -13,7 +45,31 @@
 			btn.classList.add('active');
 	}
 
+	function toggleMultiframe(enabled) {
+		if(enabled) {
+			//iframe.className = 'hide';
+			activateSource(activeSource);
+			return;
+		} 
+		enabledSources.forEach(source => {
+			if(source.id === activeSource.id) return;
+			source.frame.className = 'hide';
+			source.frame.src = 'about:blank';
+		});
+		//iframe.className = '';
+		activateSource(activeSource);
+	}
+
 	enabledSources.forEach(source => {
+		//iframe.className = 'hide';
+		const frame = Object.assign(document.createElement('iframe'), {
+			id: `frame-${source.id}`,
+			className: 'hide',
+			src: 'about:blank'
+		});
+		container.append(frame);
+		source.frame = frame;
+
 		source.fullHost = `${globalhost !== null ? globalhost : source.host}:${source.port}`;
 		const sourceBtn = Object.assign(document.createElement('div'), {
 			className: 'sidebarBtn',
@@ -47,6 +103,14 @@
 	} else if(enabledSources.length >= 1) {
 		activateSource(enabledSources[0]);
 	}
+
+	controls.remove();
+	sidebar.append(controls);
+
+	document.getElementById('multiframe').addEventListener('change', e => {
+		localStorage.setItem('multiframe', e.target.checked);
+		toggleMultiframe(e.target.checked);
+	});
 
 
 })();

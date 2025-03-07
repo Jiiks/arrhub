@@ -8,9 +8,18 @@
 	<script type="text/javascript" src="sources.js"></script>
 </head>
 <body>
-	<div class="container">
-		<div id="sidebar" class="sidebar"></div>
-		<iframe src=""></iframe>
+	<div id="maincontainer" class="container">
+		<div id="sidebar" class="sidebar">
+			<div id="controls" class="flex flex-col flex-grow">
+				<div class="flex-grow"></div>
+				<div class="toggle">
+					<input id="multiframe" type="checkbox" class="toggleinput"/>
+					<label for="multiframe" class="toggleSwitch"></label>
+					<span>Multiframe</span>
+				</div>
+			</div>
+		</div>
+		<!--<iframe id="mainframe" src=""></iframe>-->
 	</div>
 
 	<script type="text/javascript" src="main.js"></script>

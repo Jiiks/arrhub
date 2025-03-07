@@ -7,6 +7,8 @@ To build a single file just run `node build_single_file.js` or `npm run build_si
 
 Single file shoves all images as base64 and all scripts and css to `index.singlefile.html`
 
+With multiframe enabled apps remain open but hidden instead of always reloading.
+
 ![image](https://github.com/user-attachments/assets/e0b6d3d6-8f2c-4cd4-adcb-b80164f48721)
 
 
